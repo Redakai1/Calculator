@@ -12,8 +12,11 @@ public class HelloController extends Doing{
     public TextField equationField;
     // Pole dla odpowiedzi
     public Label answerLabel;
+    // Zapisywanie ostatniego operatora
     String lastOp = "";
+    // Pierwsza liczba
     String first = "";
+    // Druga liczba
     String second = "";
 
     // Event po niciskaniu klawiszy
@@ -31,8 +34,11 @@ public class HelloController extends Doing{
         if(!operationText.equals("=")){
             // Obliczenie pierwiastka
             if(operationText.equals("√")) {
+                // Poebiranie pierwszej liczby
                 first = equationField.getText();
+                // Zapisanie liczby do asnwerlabel
                 answerLabel.setText(calculate(first, null, operationText));
+                // Wyczyszczenei pierwszej zmiennej i equationField
                 first = "";
                 equationField.clear();
             // Negacja liczby
@@ -49,8 +55,11 @@ public class HelloController extends Doing{
 
         // Po kliknięciu "=", przypisanie durgiej liczby -> wyświtlenie odpowiedzi w answerlabel -> zerowanie first i second
         }else{
+            // Pobieranie drugiej liczby
             second = equationField.getText();
+            // Obliczneie i wyświtlenie odpowiedzi
             answerLabel.setText(calculate(first, second, lastOp));
+            // Wyczyszczenie zmiennych i pola
             equationField.clear();
             first = "";
             second = "";
